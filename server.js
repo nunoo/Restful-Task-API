@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/task', {
 });
 mongoose.Promise = global.Promise;
 
+app.use(express.static( __dirname + '/public/dist/public' ));
 app.use(express.static(__dirname + "/static"));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -108,7 +109,6 @@ app.get('/tasks/:id', (req, res) => {
 //===================================================================
 // Route to add 
 //===================================================================
-
 
 app.post('/tasks', (req, res) => {
     Task.create(req.body, function (err, tasks) {
