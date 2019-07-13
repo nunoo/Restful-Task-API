@@ -1,0 +1,22 @@
+.div1{
+    border: solid 10px lightsteelblue;
+    border-radius: 15px;
+    text-align: center;
+    margin: 5px;
+}
+.btn{
+    display: block;
+    margin: auto auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.div2{
+    border: solid 10px pink;
+    border-radius: 15px;
+    margin: 15px;
+}
+.div3{
+    border: solid 10px palegreen;
+    border-radius: 15px;
+    margin: 15px;
+}
