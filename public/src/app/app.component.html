@@ -4,25 +4,19 @@
 
 <div class="div1">
   <h1>
-    Welcome to {{ title }}!
+  {{ title }}
   </h1>
-  <img width="300" alt="Angular Logo" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png">
+  <img width="300" alt="charizard" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
   <div class="div2">
-    <button class="btn btn-info" (click)="onButtonClick()">Get All Tasks</button>
+    <button type="button" class="btn btn-info" (click)="onButtonClick()">Get All Tasks</button>
     <div *ngFor="let task of tasks">
-
-        <!-- <p *ngFor="let task of tasks">{{task.description}}</p> -->
-        <p>{{task.description}} <button class="btn btn-success" (click)="onButtonClick2()">show</button></p>
-        
-
-
+        <p>{{task.description}} </p>
+        <button type="button" class="btn btn-success" (click)="getTasksById(task)">show</button>
     </div>
   </div>
-  <div class="div3">
-    <p>{{tasksid[0].title}}</p>
-    <p>{{tasksid[0].description}}</p>
+  <div class="div3" *ngIf="is_tasks">
+    <p>{{task_info.title}}</p>
+    <p>{{task_info.description}}</p>
   </div>
 </div>
-
-
 <router-outlet></router-outlet>
