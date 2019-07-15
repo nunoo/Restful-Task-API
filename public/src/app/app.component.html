@@ -9,14 +9,14 @@
   <img width="300" alt="charizard" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
   <div class="div2">
     <button type="button" class="btn btn-info" (click)="onButtonClick()">Get All Tasks</button>
-    <div *ngFor="let task of tasks">
-        <p>{{task.description}} </p>
-        <button type="button" class="btn btn-success" (click)="getTasksById(task)">show</button>
+    <div *ngFor="let task of tasks; let taskIndex = index">
+        <p>{{task?.title}}</p>
+        <button type="button" class="btn btn-success" (click)="getTasksById(taskIndex)">show</button>
     </div>
   </div>
-  <div class="div3" *ngIf="is_tasks">
-    <p>{{task_info.title}}</p>
-    <p>{{task_info.description}}</p>
+  <div class="div3" *ngIf="is_tasks" >
+    <p>{{task_info?.title}}</p>
+    <p>{{task_info?.description}}</p>
   </div>
 </div>
 <router-outlet></router-outlet>

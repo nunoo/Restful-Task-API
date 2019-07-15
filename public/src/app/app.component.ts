@@ -25,16 +25,9 @@ export class AppComponent {
     })
   }
 
-  getTasksById(task) {
-    console.log('showing one task')
-    var tasks_id = task._id
-    let taskObservable = this._httpService.getTasks();
-    taskObservable.subscribe(data => {
-      console.log("Got one tasks!", data);
-      console.log(data)
-      this.task_info = data.data
+  getTasksById(taskIndex) {
+      this.task_info = this.tasks[taskIndex]
       this.is_tasks = true
-    })
   }
 
   onButtonClick(){
