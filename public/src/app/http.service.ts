@@ -25,7 +25,9 @@ export class HttpService {
     return this._http.delete('/tasks/' + id)
   }
 
-  editTask(id){
-    return this._http.put('/tasks/' + id, id)
+  editTask(editTask){
+    // console.log('im working service')
+    // console.log(editTask)
+    return this._http.put('/tasks/' + editTask.id, editTask)
   }
 }

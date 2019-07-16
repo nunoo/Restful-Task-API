@@ -16,10 +16,9 @@ export class AppComponent implements OnInit {
   taskid = {};
   edit = false;
   task_info = {};
-  editTaskid: any;
+  editTask: any;
 
   ngOnInit() {
-    // this.getTasks();
     this.newTask = { title: "", description: "" }
   }
 
@@ -47,9 +46,6 @@ export class AppComponent implements OnInit {
       this.is_tasks = true
       console.log(this.taskid)
     })
-    // this.task_info = this.tasks[taskIndex]
-    // this.is_tasks = true
-    // console.log(taskIndex)
   }
 
 
@@ -69,42 +65,17 @@ export class AppComponent implements OnInit {
     this.getTasks();
   }
 
-  editTask(id) {
-    let observable = this._httpService.editTask(id);
+  onEdit() {
+    let observable = this._httpService.editTask(this.editTask);
     observable.subscribe(data => {
-      this.editTask = data.data 
-      this.editTaskid = { title: "", description: "" }
-      this.edit = true;
+      this.getTasks();
     })
   }
   
-  showEdit(edit_Task){
-    this.edit = true
-    this.editTask = {'title': edit_Task.title, 'description': edit_Task.description}
+  showEditTask(task){
+    this.editTask = {title: task.title, description: task.description, id: task._id}
+    this.edit = true;
   }
 
-  // showEditForm(task_select){
-  //   this.edit = true; 
-  //   this.editTaskid = {'title': task_select.title, 'description': task_select.description, 'id': task_select._id}
-  //   // console.log(this.editedTask)
-  //   console.log("About to edit task")
-  // }
-
-
-  // showEditForm(task_select){
-  //   this.edit = true; 
-  //   this.editTaskid = {'title': task_select.title, 'description': task_select.description, 'id': task_select._id}
-  //   // console.log(this.editedTask)
-  //   console.log("About to edit task")
-  // }
-  // editTask(){
-  //   let observable = this._httpService.editTask(this.editTask)
-  //   observable.subscribe(data =>{
-  //     console.log("Edited task and returned")
-  //     //Reset Edited Task Obj
-  //     this.editTaskid = {this: "", description: "", id: ""}
-  //     this.edit = false;
-      
-  //   })
-  // }
+  
 }
