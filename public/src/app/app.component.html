@@ -4,19 +4,63 @@
 
 <div class="div1">
   <h1>
-  {{ title }}
+    {{ title }}
   </h1>
-  <img width="300" alt="charizard" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
-  <div class="div2">
+  <img width="300" alt="charizard"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png">
+  <div class="div2 overflow-auto">
     <button type="button" class="btn btn-info" (click)="onButtonClick()">Get All Tasks</button>
-    <div *ngFor="let task of tasks; let taskIndex = index">
-        <p>{{task?.title}}</p>
-        <button type="button" class="btn btn-success" (click)="getTasksById(taskIndex)">show</button>
+    <div *ngFor="let task of tasks">
+      <p>{{task?.title}}</p>
+      <button type="button" class="btn btn-success" (click)="getTasksById(task._id)">show</button>
+      <button type="button" class="btn btn-info" (click)="editTask(task._id)">edit</button>
+      <button type="button" class="btn btn-danger" (click)="deleteTask(task._id)">delete</button>
+
     </div>
   </div>
-  <div class="div3" *ngIf="is_tasks" >
-    <p>{{task_info?.title}}</p>
-    <p>{{task_info?.description}}</p>
+  <div class="div3" *ngIf="is_tasks">
+    <p>{{taskid?.title}}</p>
+    <p>{{taskid?.description}}</p>
+  </div>
+
+  <div class="div4">
+
+    <form (submit)="addTask()">
+      <!-- use the json pipe to see how newTask changes in real time -->
+      <p> Add Task </p>
+      <input type="text" name="newTask.title" [(ngModel)]="newTask.title " placeholder="title" />
+      <input type="text" name="newTask.description" [(ngModel)]="newTask.description" placeholder="description" />
+      <input type="submit" value="Create Task" />
+    </form>
+
+  </div>
+
+  <div class="div5" *ngIf="edit" >
+    <form (submit)="editTask()" >
+     
+      <p>Edit Task</p>
+      <input type="text" name="editTask.title" [(ngModel)]="editTask.title " value="{{editTaskid.title}}" />
+      <input type="text" name="editTask.description" [(ngModel)]="editTask.description" value="{{editTaskid.description}}" />
+      <input type="submit" value="Edit Task" />
+    </form>
+
+    <!-- <form (submit)="editTask()">
+        <p> {{ editedTask | json }} </p>
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="title" name="editTask.title" [(ngModel)]="editTask.title" value="editTask.title">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="description" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="editTask.description" [(ngModel)]="editTask.description" value="editTask.description">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-dark mb-2">Edit</button>
+    </form> -->
+
   </div>
 </div>
 <router-outlet></router-outlet>

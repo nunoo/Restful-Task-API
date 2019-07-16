@@ -14,9 +14,22 @@
     border: solid 10px pink;
     border-radius: 15px;
     margin: 15px;
+    height: 200px;
 }
 .div3{
     border: solid 10px palegreen;
     border-radius: 15px;
     margin: 15px;
+}
+.div4{
+    border: solid 10px lightgrey;
+    border-radius: 15px;
+    margin: 15px;
+    height: 100px;
+}
+.div5{
+    border: solid 10px plum;
+    border-radius: 15px;
+    margin: 15px;
+    height: 100px;
 }
