@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
-import { ConsoleReporter } from 'jasmine';
 
 
 @Component({
@@ -69,13 +68,14 @@ export class AppComponent implements OnInit {
     let observable = this._httpService.editTask(this.editTask);
     observable.subscribe(data => {
       this.getTasks();
+      this.edit = false;
     })
   }
-  
-  showEditTask(task){
-    this.editTask = {title: task.title, description: task.description, id: task._id}
+
+  showEditTask(task) {
+    this.editTask = { title: task.title, description: task.description, id: task._id }
     this.edit = true;
   }
 
-  
+
 }

@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
 <div class="div1">
   <h1>
@@ -8,7 +8,16 @@
   </h1>
   <img width="300" alt="charizard"
     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png">
-  <div class="div2 overflow-auto">
+
+    <app-show *ngIf="is_tasks" [taskToShow]="taskid"></app-show> 
+
+    <!-- <div class="div3 root" *ngIf="is_tasks">
+      <p>{{taskid?.title}}</p>
+      <p>{{taskid?.description}}</p>
+      <app-task *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task> 
+    </div> -->
+
+  <div class="div2 ">
     <button type="button" class="btn btn-info" (click)="onButtonClick()">Get All Tasks</button>
     <div *ngFor="let task of tasks">
       <p>{{task?.title}}</p>
@@ -17,10 +26,6 @@
       <button type="button" class="btn btn-danger" (click)="deleteTask(task._id)">delete</button>
 
     </div>
-  </div>
-  <div class="div3" *ngIf="is_tasks">
-    <p>{{taskid?.title}}</p>
-    <p>{{taskid?.description}}</p>
   </div>
 
   <div class="div4">
